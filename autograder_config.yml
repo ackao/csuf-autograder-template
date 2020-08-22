@@ -1,0 +1,20 @@
+language: c++
+linter: true
+test_framework: blackbox
+
+code:
+- main: foo.cpp
+  implems: bar.cpp
+  compile_points: 5
+  linter_points: 5
+
+blackbox_tests:
+- test_name: "example test"
+  test_types:
+    - output
+    - exitcode
+  obj: foo
+  stdin: "baz"
+  stdout: "foobar"
+  exitcode: 42
+  points: 9000

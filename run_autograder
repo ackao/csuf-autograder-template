@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd /autograder/source/csuf-autograder-base
+python3 grade.py
