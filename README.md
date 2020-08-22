@@ -43,4 +43,6 @@ blackbox_tests:
   [stdout: ""]                     # Expected stdout; required for output tests
   [exitcode: 1]                    # Expected exit code; 0 by default
   points: 1                        # Number of points this test case is worth
+  [visibility: visible]            # Test case visibility to students; visible by default
+                                   #   options: hidden, after_due_date, after_published, visible
 ```
