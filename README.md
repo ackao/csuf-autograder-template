@@ -21,7 +21,6 @@ The following fields are available. Optional fields are denoted by [].
 
 ```
 language: c++                      # Currently only c++ is supported
-[linter: true]                     # Enable clang-tidy checks; false by default
 test_framework: blackbox           # Currently only blackbox is supported
 code:
 - main: foo.cpp                    # Replace this with the file containing the main function
@@ -29,8 +28,28 @@ code:
     - bar.cpp]
   [compile_points: 5]              # Points given for successful compilation; 0 by default
   [linter_points:  5]              # Points for error-free linting; 0 by default
+[linter:]                          # Enable clang-tidy checks. False if not present. See below for documentation.
+```
+### Linter config
+
+The `linter` block has the following syntax:
+
+```
+linter:
+  enable: true                     # Actually enable the linter
+  [checks: ""]                     # Checks to pass as --checks= flag to clang-tidy
+                                   #   Ex: "-*,google-readability-todo"
+                                   # Default: "*,-google-build-using-namespace,-fuchsia-default-arguments,-llvm-header-guard"
+  [test_name: "{}"]                # Python format string for test name. Needs one {}.
+                                   #   The executable name will be put in the {}
+                                   #   default: "Linter Test: {}"
+  [success_message: ""]            # Custom message to print on linter success
+                                   #   default: "No linter errors found"
+  [failure_message: ""]            # Custom message to print on linter failure
+                                   #   default: "Linter returned errors"
 ```
 
+### Blackbox testing config
 The following must also be present if blackbox testing is used:
 ```
 blackbox_tests:
