@@ -1,5 +1,4 @@
 language: c++
-linter: true
 test_framework: blackbox
 
 code:
@@ -7,6 +6,9 @@ code:
   implems: bar.cpp
   compile_points: 5
   linter_points: 5
+
+linter:
+  enable: false
 
 blackbox_tests:
 - test_name: "example test"
