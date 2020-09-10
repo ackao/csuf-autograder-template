@@ -22,7 +22,7 @@ The following fields are available. Optional fields are denoted by `[]`.
 ```
 language: c++                      # Currently only c++ is supported
 test_framework: blackbox           # Currently only blackbox is supported
-[style_check: false]               # Whether to enable style checking; false by default
+[style_check:]                     # Whether to enable style checking; false by default. See below.
 code:
 - main: foo.cpp                    # Replace this with the file containing the main function
   [implems:                        # Additional files to compile with main; none by default
@@ -39,6 +39,13 @@ For C++, this runs `clang-format` on student code and diffs the result against t
 It uses a default `.clang-format` configuration located [here](https://github.com/ackao/csuf-autograder-base/blob/master/cpp_tester/.clang-format)
 
 To use a custom configuration, include your own `.clang-format` in the base directory of this repo.
+
+The `style_check` block has the following syntax:
+```
+style_check:
+  enable: true
+  [strip_ws: false]               # strip trailing whitespace from each line, default: false
+```
 
 ### Linter config
 
