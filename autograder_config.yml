@@ -1,6 +1,7 @@
 language: c++
 test_framework: blackbox
-style_check: false
+style_check:
+  enable: false
 
 code:
 - main: foo.cpp
