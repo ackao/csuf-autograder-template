@@ -151,10 +151,9 @@ Example test case:
 
 TEST(PowerTest, BasicTests)
 {
-  int points = 1;
-  RecordProperty("points", points);
+  RecordProperty("points", 1);
   RecordProperty("visibility", "visible");
-  RecordProperty("max_score", points * cases.size());
+  RecordProperty("max_score", 5);
 
   // Can't use test case struct for visible tests because it won't show values to students when failed :/
   ASSERT_DURATION_LE(3, ASSERT_EQ(power(2, 3), 8));
