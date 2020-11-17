@@ -1,0 +1,3 @@
+[submodule "csuf-autograder-base"]
+	path = csuf-autograder-base
+	url = https://github.com/ackao/csuf-autograder-base.git

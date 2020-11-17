@@ -7,9 +7,11 @@ Base autograder is located at https://github.com/ackao/csuf-autograder-base
 ## Setup
 
 1. Use this repository as a template and create your own autograder for the specific assignment
+1. This template uses Git submodules to manage which version of the base autograder is used.
+You should not need to change it but if you do, use `git submodule` to pick a different commit to pin to.
 1. Edit autograder_config.yml to select the appropriate autograder settings
 1. Add testing, choose one option:
-    * blackbox testing (configured in autograder_config.yml) 
+    * blackbox testing (configured in autograder_config.yml)
     * googletest unit testing (unit test case files located in tests/ directory)
 1. Zip this directory and upload it to Gradescope
 
@@ -88,12 +90,13 @@ blackbox_tests:
   [exitcode: 1]                    # Expected exit code; 0 by default
   points: 1                        # Number of points this test case is worth
   [visibility: visible]            # Test case visibility to students; visible by default
-                                   #   options: hidden, after_due_date, after_published, visible
+                                   #   options: hidden, after_due_date, after_published, visible, hide_message
+                                   #   hide_message means: visible score but hide diff output
 ```
 
 ### Googletest testing config
 Unit test files must be located in a tests/ subdirectory of this directory.
-Supports multiple test case files per main/implem combination. 
+Supports multiple test case files per main/implem combination.
 
 ```
 googletest:
@@ -114,7 +117,7 @@ Allowable fields are:
 * points: how many points each assertion is worth, default 1
 * max_score: how many points the entire test case is worth (equal to points if not set)
 * all_or_nothing: if a single assertion fails, the score is 0. false by default.
-* visibility: test case visibility to students, visibile by default
+* visibility: test case visibility to students, visibile by default (see blackbox testing for options)
 
 Example test case:
 ```c++
